@@ -11,7 +11,7 @@ image:
   tag: ""
 
 imagePullSecrets: []
-nameOverride: "search-engine-ui"
+nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
