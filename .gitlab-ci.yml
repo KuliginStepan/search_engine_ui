@@ -24,19 +24,21 @@ package:
 deploy-test:
   stage: deploy
   image: alpine/helm:3.4.2
+  when: manual
   environment:
     name: test
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL
+    - helm upgrade --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL
 
 deploy-prod:
   stage: deploy
   image: alpine/helm:3.4.2
+  when: manual
   environment:
     name: production
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL
+    - helm upgrade --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL
