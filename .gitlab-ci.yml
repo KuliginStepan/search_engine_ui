@@ -29,7 +29,7 @@ deploy-test:
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.host=$MONGO_HOST,mongo.port=$MONGO_PORT
+    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL
 
 deploy-prod:
   stage: deploy
@@ -39,4 +39,4 @@ deploy-prod:
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.host=$MONGO_HOST,mongo.port=$MONGO_PORT
+    - helm upgrage --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,mongo.url=$MONGO_URL

@@ -34,10 +34,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: MONGO
-              value: {{ .Values.mongo.host }}
-            - name: MONGO_PORT
-              value: {{ .Values.mongo.port }}
+            - name: MONGO_URL
+              value: {{ .Values.mongo.url }}
           ports:
             - name: http
               containerPort: 8000
