@@ -3,7 +3,7 @@ FROM python:3.6.0-alpine
 WORKDIR /app/ui
 ADD . /app
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 ENV FLASK_APP=ui.py
 
