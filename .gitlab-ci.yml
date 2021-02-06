@@ -30,7 +30,7 @@ deploy-test:
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrade --namespace search-engine --create-namespace --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,imagePullSecrets.0.name=gitlab-registry-credentials,mongo.url=$MONGO_URL
+    - helm upgrade --namespace search-engine --create-namespace --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,imagePullSecrets[0].name=gitlab-registry-credentials,mongo.url=$MONGO_URL
 
 deploy-prod:
   stage: deploy
@@ -41,4 +41,4 @@ deploy-prod:
     kubernetes:
       namespace: search-engine
   script:
-    - helm upgrade --namespace search-engine --create-namespace --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,imagePullSecrets.0.name=gitlab-registry-credentials,mongo.url=$MONGO_URL
+    - helm upgrade --namespace search-engine --create-namespace --install ui ./chart --set image.repository=$CI_REGISTRY_IMAGE,image.tag=$CI_COMMIT_SHORT_SHA,imagePullSecrets[0].name=gitlab-registry-credentials,mongo.url=$MONGO_URL
